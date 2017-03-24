@@ -7,7 +7,7 @@ const PeerBook = require('peer-book')
 const multiaddr = require('multiaddr')
 const EventEmitter = require('events').EventEmitter
 const assert = require('assert')
-const Ping = require('libp2p-ping')
+//const Ping = require('libp2p-ping')
 const setImmediate = require('async/setImmediate')
 
 exports = module.exports
@@ -68,7 +68,7 @@ class Node extends EventEmitter {
     }
 
     // Mount default protocols
-    Ping.mount(this.swarm)
+    //Ping.mount(this.swarm)
 
     // Not fully implemented in js-libp2p yet
     this.routing = undefined
@@ -141,11 +141,11 @@ class Node extends EventEmitter {
     return this.isOnline
   }
 
-  ping (peer, callback) {
-    assert(this.isOn(), OFFLINE_ERROR_MESSAGE)
-    const peerInfo = this._getPeerInfo(peer)
-    callback(null, new Ping(this.swarm, peerInfo))
-  }
+  // ping (peer, callback) {
+  //   assert(this.isOn(), OFFLINE_ERROR_MESSAGE)
+  //   const peerInfo = this._getPeerInfo(peer)
+  //   callback(null, new Ping(this.swarm, peerInfo))
+  // }
 
   dial (peer, protocol, callback) {
     assert(this.isOn(), OFFLINE_ERROR_MESSAGE)
